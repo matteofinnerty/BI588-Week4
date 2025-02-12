@@ -1,0 +1,127 @@
+---
+title: "BI588-Week4-Module8"
+output: html_document
+date: "2025-02-11"
+---
+
+**Week 4: Module 8 Notes*
+
+Announcements
+- Homework 3 due March 3rd. 
+- Choose replication paper by 2/18
+
+**Statistical Inference**
+Trying to draw conclusion about a population based on measurements from a noisy sample or trying to evaluate whether it is reasonable to assume that our sample is drawn from a particular population. 
+
+Complications: 
+a. our sample may be biased
+b. there may be confounding variables
+c. 
+
+**Probability**
+Summarize the relative frequencies of possible outcomes. 
+Applied to the population level by describing the magnitude of chance associated with particular observations. 
+Probabilities vary between 0 and 1. 
+
+*We will use the {manipulate} package. To run manipulate effectively you must run the code directly in the console, it does not work in R markdown documents. Once run, the graph will appear in the Plots tab in the bottom right. 
+
+Importing {manipulate}
+```{r}
+library(manipulate)
+
+
+```
+
+Rolling a die example
+```{r}
+#RUN THIS IN THE CONSOLE
+outcomes <- c(1, 2, 3, 4, 5, 6)
+manipulate(hist(sample(outcomes, n, replace = TRUE), breaks = c(0.5, 1.5, 2.5,
+    3.5, 4.5, 5.5, 6.5), probability = TRUE, main = paste("Histogram of Outcomes of ",
+    n, " Die Rolls", sep = ""), xlab = "roll", ylab = "probability"), n = slider(0,
+    10000, initial = 10, step = 10))
+```
+
+**Rules of Probability**
+*Positive probability*: Probability that something occurs
+*Null probability*: Probability that nothing occurs
+*Union symbol (U)*: essentially OR
+*Intersection symbol (Upside down union)*: essentially AND
+*Given symbol*: |
+*Mutually exclusive*: cannot co-occur, probability is 0
+*Bar above symbol*: means the complement of, essentially NOT
+a. example - Pr(A with line above) is the same as Pr(not A)
+*Independence*: the instance of one event does not affect the probability of the instance of another event
+
+There are a bunch of equations for probabilities 
+
+**Random Variables**
+A variable whose outcomes are assumed to arise by chance or according to some random mechanism.
+
+Two types
+*Discrete*: countable
+*Continuous*: can be measured to infinite values (ie. they can be any real number within a range). NOT countable. 
+
+**Probability function**
+A mathematical function that describes the chance associate with a random variable having a particular outcome or falling within a given range of outcomes. 
+
+2 types:
+
+1.*Probability mass functions (PMF)* are associated with discrete random variables. These functions describe the probability that a random variable takes a particular value.
+To be a valid PMF...
+  1. there are a set number of possible, distinct outcomes
+  2. the probability of any outcome is greater than 0. 
+  3. The sum of the probabilities of all outcomes is 1.
+  
+  *Cumulative Probability Graph*
+    Used for Discrete Random Variables.Adds the probabilities of the outcomes. After all possible outcomes are added, the probability          should   be 1. 
+
+2. *Probability density functions* are associated with continuous random variables. These functions describe the probability that a random variable falls within a given range of outcomes. The area under the curve = the probability.
+To be a valid PDF...
+  1. the probability that the random variable is greater than a certain number is never negative ???
+  2. the total area under the curve is 1.
+
+The *Beta Distribution* refers to a family of continuous probability distributions defined over the interval [0, 1] and parametrized by two positive shape parameters, denoted by 𝛼and 𝛽, that appear as exponents of the random variable 𝑥 and control the shape of the distribution. (I don't fully understand what alpha and beta represent)
+
+  The *Cumulative Distribution Function (CDF)* of a random variable is defined sa the probability of observing a random variable X taking    the vaue of x or less. 
+  
+  Like the Cumulative Probability Graph, we see a continuous curve increasing probability until we hit 1. This is essentially the            continuous equivalent of the Cumulative Probability Graph.
+  
+**Beta functions**
+pbeta()
+rbeta()
+dbeta()
+qbeta()
+
+
+**Survival function**
+unimportant - Schmitt
+
+**Qth quantile**
+asfjasdjfasfs
+
+**Expected Mean and Variance of Random Variables**
+
+
+**The Bernoulli Distribution**
+The probability of a binary random variable (only 2 possible outcomes).
+Probability mass function for bernoulli distribution: 
+
+*The Bernoulli distribution is a special case of the binomial distribution*
+The bernoulli dsitribution is just one trial. The binomial distribution is essentially many bernoulli trials. 
+
+dbinom is the density function for the binomial distribution. dbinom(x = k, size = n, prob = p) where k is the number of successes, n is the number of trials, p is the probability of success.
+
+
+**Poisson distribution**
+Used for counts. Lower limit is 0, upper limit is infinity. 
+
+
+
+
+
+
+
+
+
+
