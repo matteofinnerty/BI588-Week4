@@ -35,11 +35,11 @@ library(manipulate)
 Rolling a die example
 ```{r}
 #RUN THIS IN THE CONSOLE
-outcomes <- c(1, 2, 3, 4, 5, 6)
-manipulate(hist(sample(outcomes, n, replace = TRUE), breaks = c(0.5, 1.5, 2.5,
-    3.5, 4.5, 5.5, 6.5), probability = TRUE, main = paste("Histogram of Outcomes of ",
-    n, " Die Rolls", sep = ""), xlab = "roll", ylab = "probability"), n = slider(0,
-    10000, initial = 10, step = 10))
+##outcomes <- c(1, 2, 3, 4, 5, 6)
+##manipulate(hist(sample(outcomes, n, replace = TRUE), breaks = c(0.5, 1.5, 2.5,
+    #3.5, 4.5, 5.5, 6.5), probability = TRUE, main = paste("Histogram of Outcomes of ",
+    #n, " Die Rolls", sep = ""), xlab = "roll", ylab = "probability"), n = slider(0,
+    #10000, initial = 10, step = 10))
 ```
 
 **Rules of Probability**
@@ -69,59 +69,66 @@ A mathematical function that describes the chance associate with a random variab
 
 1.*Probability mass functions (PMF)* are associated with discrete random variables. These functions describe the probability that a random variable takes a particular value.
 To be a valid PMF...
-  1. there are a set number of possible, distinct outcomes
-  2. the probability of any outcome is greater than 0. 
-  3. The sum of the probabilities of all outcomes is 1.
+  a. there are a set number of possible, distinct outcomes
+  b. the probability of any outcome is greater than 0. 
+  c. The sum of the probabilities of all outcomes is 1.
   
   *Cumulative Probability Graph*
     Used for Discrete Random Variables.Adds the probabilities of the outcomes. After all possible outcomes are added, the probability          should   be 1. 
 
-2. *Probability density functions* are associated with continuous random variables. These functions describe the probability that a random variable falls within a given range of outcomes. The area under the curve = the probability.
+2. *Probability density functions (PDF)* are associated with continuous random variables. These functions describe the probability that a random variable falls within a given range of outcomes. The area under the curve = the probability.
 To be a valid PDF...
-  1. the probability that the random variable is greater than a certain number is never negative ???
-  2. the total area under the curve is 1.
+  a. the probability that the random variable is greater than a certain number is never negative ???
+  b. the total area under the curve is 1.
 
 The *Beta Distribution* refers to a family of continuous probability distributions defined over the interval [0, 1] and parametrized by two positive shape parameters, denoted by 𝛼and 𝛽, that appear as exponents of the random variable 𝑥 and control the shape of the distribution. (I don't fully understand what alpha and beta represent)
 
-  The *Cumulative Distribution Function (CDF)* of a random variable is defined sa the probability of observing a random variable X taking    the vaue of x or less. 
+The *Cumulative Distribution Function (CDF)* of a random variable is defined as the probability of observing a random variable X taking the value of x or less. 
   
-  Like the Cumulative Probability Graph, we see a continuous curve increasing probability until we hit 1. This is essentially the            continuous equivalent of the Cumulative Probability Graph.
+Like the Cumulative Probability Graph, we see a continuous curve increasing probability until we hit 1. This is essentially the continuous equivalent of the Cumulative Probability Graph.
   
-**Beta functions**
-pbeta()
-rbeta()
-dbeta()
-qbeta()
-
-
-**Survival function**
-unimportant - Schmitt
+**Beta functions** (*Can be used for non-beta distributions too, substitute the name of the distribution where beta is*)
+pbeta(): input an outcome, returns the probability of the random variable assuming x or less. 
+rbeta(): draws random simulated data from the distribution
+dbeta(): returns the probability that an outcome takes on an exact inputted value 
+qbeta(): input a probability/proportion, returns the exact outcome that has that proportion of the distribution at or below it
 
 **Qth quantile**
-asfjasdjfasfs
+The Qth quantile tells you the value at which Q% of data are at or below. 
 
 **Expected Mean and Variance of Random Variables**
-
+mu = population/expected mean
+sigma squared = population/expected variance
 
 **The Bernoulli Distribution**
+This is essentially a single trial of a binomial distribution.
+
 The probability of a binary random variable (only 2 possible outcomes).
-Probability mass function for bernoulli distribution: 
+Probability mass function for bernoulli distribution: P(X successes) = p^x(1-p)^(1-x)
+Here, p represents the expected probability of success. 
+Mu = p, and sigma squared = p(1-p)
 
 *The Bernoulli distribution is a special case of the binomial distribution*
-The bernoulli dsitribution is just one trial. The binomial distribution is essentially many bernoulli trials. 
+The bernoulli distribution is just one trial. The binomial distribution is essentially many bernoulli trials. 
+
+Probability mass function: (n choose x)(p^x) * ((1-p)^(n-x))
+Again, p represents the expected probability of success.
+Mu = np
+Sigma squared = np(1-p)
 
 dbinom is the density function for the binomial distribution. dbinom(x = k, size = n, prob = p) where k is the number of successes, n is the number of trials, p is the probability of success.
 
-
 **Poisson distribution**
-Used for counts. Lower limit is 0, upper limit is infinity. 
+Used to model open-ended counts. That is, the range of possible s Lower limit is 0, upper limit is infinity. 
 
+**Q-Q Plots**
+A Q-Q plot, or quantile-quantile plot, is a way to check if data are normally distributed. 
+On the x axis: the theoretical quantiles pulled from a normal distribution
+On the y axis: the actual quantiles of your data
+*If the resulting plot is follows the line y=x, the data are normally distributed. 
 
+**Sample Distributions vs. Population Distributions**
+The above distributions and functions are all related to populations, but we rarely ever have data on a whole population.
 
-
-
-
-
-
-
+We can basically use all of the above tests using sample means, sample variances. 
 
